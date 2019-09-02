@@ -1,0 +1,101 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="13dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:gravity="center_vertical"
+                android:text="TOP"
+                android:textSize="15sp" />
+
+            <com.baiiu.filter.typeview.DoubleGridView.GridViewInScrollView
+                android:id="@+id/grid_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clipToPadding="true"
+                android:horizontalSpacing="12dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="4"
+                android:paddingBottom="15dp"
+                android:scrollbars="none"
+                android:verticalSpacing="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="BOTTOM"
+                android:textSize="15sp" />
+
+
+            <com.baiiu.filter.typeview.DoubleGridView.GridViewInScrollView
+                android:id="@+id/grid_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clipToPadding="true"
+                android:horizontalSpacing="12dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="3"
+                android:paddingBottom="15dp"
+                android:scrollbars="none"
+                android:verticalSpacing="15dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/double_tv_reset"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="22dp"
+            android:background="@drawable/btn_chongzhi"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="重置"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/double_tv_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="22dp"
+            android:background="@drawable/btn_chaxun"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</FrameLayout>

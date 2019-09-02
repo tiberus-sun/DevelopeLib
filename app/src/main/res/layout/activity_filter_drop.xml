@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.szyl.szyllibrary.view.TsCustomActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorPrimary"
+        app:cus_title="条件筛选"
+        app:isnot_right_pic="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp06"
+        android:layout_marginTop="@dimen/dp04"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="9"
+            android:layout_height="wrap_content">
+
+            <!--搜索框-->
+            <com.szyl.szyllibrary.view.TsSearchEditText
+                android:id="@+id/mi_decl_search"
+                android:layout_gravity="center_vertical"
+                style="@style/StyleEditText"
+                android:hint="搜索条件"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.baiiu.filter.view.scroll.DropDownScrollMenu
+        android:id="@+id/dropDownMenu"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/mFilterContentView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp06"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+    </com.baiiu.filter.view.scroll.DropDownScrollMenu>
+
+</LinearLayout>

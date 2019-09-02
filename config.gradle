@@ -1,0 +1,14 @@
+ext {
+
+    minSdkVersion=19
+    targetSdkVersion=28
+    compileSdkVersion=28
+    versionName="V1.0.2"
+    versionCode=201908022
+
+    libraries = [
+            "appcompat-v7"   : 'com.android.support:appcompat-v7:28.+',
+            "design"         : 'com.android.support:design:28.+',
+            "cardview"     : 'com.android.support:cardview-v7:28.+'
+    ]
+}

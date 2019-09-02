@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.tiberus-sun'
+android {
+
+    compileSdkVersion   28
+    defaultConfig {
+        minSdkVersion    19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:appcompat-v7:28.+'
+    //Zxing核心包
+    implementation 'com.google.zxing:core:3.3.0'
+    //图片库
+    api 'com.github.bumptech.glide:glide:3.7.0'
+    //图片裁剪
+    api 'com.github.yalantis:ucrop:2.2.2-native'
+}
+
+    /*//打成jar包
+    task makeJar(type: Copy){
+        delete 'build/libs/test.jar'
+        from('build/intermediates/bundles/default/')
+        into('build/libs/')
+        include('classes.jar')
+        rename('classes.jar','test.jar')
+    }
+    makeJar.dependsOn(build)*/
+
+    // 指定编码
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+    // 打包源码
+    task sourcesJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier = 'sources'
+    }
+    task javadoc(type: Javadoc) {
+        failOnError false
+        source = android.sourceSets.main.java.sourceFiles
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+        classpath += configurations.compile
+    }
+    // 制作文档(Javadoc)
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }

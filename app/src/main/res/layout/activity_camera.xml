@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.szyl.szyllibrary.view.TsCustomActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorPrimary"
+        app:cus_title="自定义相机"
+        app:isnot_right_pic="true" />
+
+    <RelativeLayout
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:background="@mipmap/dzpzbj">
+
+        <ImageView
+            android:id="@+id/show_iv"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/photo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:text="点击拍照"
+            android:drawablePadding="6dp"
+            android:drawableTop="@mipmap/dzqddjpz"
+            android:layout_centerInParent="true" />
+        <ImageView
+            android:id="@+id/cancel_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ico_cancel"/>
+    </RelativeLayout>
+
+</LinearLayout>

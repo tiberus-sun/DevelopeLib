@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">szylLibrary</string>
+
+    <!--图片选择-->
+    <string name="folder_all">所有图片</string>
+    <string name="preview">预览</string>
+    <string name="msg_no_camera">找不到系统相机</string>
+    <string name="msg_amount_limit">超过图片限制</string>
+    <string name="go_select">图片选择</string>
+
+</resources>

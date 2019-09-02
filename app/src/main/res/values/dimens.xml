@@ -1,0 +1,57 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 手机 通用参数 -->
+    <dimen name="dp02">2dp</dimen>
+    <dimen name="dp04">4dp</dimen>
+    <dimen name="dp06">6dp</dimen>
+    <dimen name="dp08">8dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp18">18dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp22">22dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp26">26dp</dimen>
+    <dimen name="dp28">28dp</dimen>
+    <dimen name="dp30">30dp</dimen>
+    <dimen name="dp32">32dp</dimen>
+    <dimen name="dp34">34dp</dimen>
+    <dimen name="dp36">36dp</dimen>
+    <dimen name="dp38">38dp</dimen>
+    <dimen name="dp40">40dp</dimen>
+    <dimen name="dp48">48dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp54">54dp</dimen>
+    <dimen name="dp56">56dp</dimen>
+    <dimen name="dp60">60dp</dimen>
+    <dimen name="dp66">66dp</dimen>
+    <dimen name="dp70">70dp</dimen>
+    <dimen name="dp74">74dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+    <dimen name="dp88">88dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="dp110">110dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+    <dimen name="dp140">140dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+    <dimen name="mdp54">-54dp</dimen>
+
+    <dimen name="dp104">104dp</dimen>
+
+
+    <!-- 常用字体大小 -->
+    <dimen name="sp10">10sp</dimen>
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="sp14">14sp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="sp18">18sp</dimen>
+    <dimen name="sp20">20sp</dimen>
+    <dimen name="sp22">22sp</dimen>
+    <dimen name="sp30">30sp</dimen>
+    <dimen name="sp34">34sp</dimen>
+</resources>

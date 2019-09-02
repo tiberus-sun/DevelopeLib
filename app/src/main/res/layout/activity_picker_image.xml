@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="app.szyl.com.developetools.MainActivity">
+
+    <com.szyl.szyllibrary.view.TsCustomActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:cus_title="图片选择"
+        app:isnot_right_pic="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="6dp"
+        android:text="展示图片:"
+        android:textSize="18sp" />
+
+
+    <com.szyl.szyllibrary.tools.pickimage.ImageGridView
+        android:id="@+id/show_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:horizontalSpacing="4dp"
+        android:numColumns="4"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
+
+
+    <LinearLayout
+        android:id="@+id/add_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="新增图片:"
+            android:textSize="18sp" />
+
+        <com.szyl.szyllibrary.tools.pickimage.ImageGridView
+            android:id="@+id/add_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:horizontalSpacing="4dp"
+            android:numColumns="4"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/showadd_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="展示+新增图片:"
+            android:textSize="18sp" />
+
+        <com.szyl.szyllibrary.tools.pickimage.ImageGridView
+            android:id="@+id/showadd_gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:horizontalSpacing="4dp"
+            android:numColumns="4"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
+    </LinearLayout>
+</LinearLayout>

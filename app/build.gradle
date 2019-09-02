@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+def libraries = rootProject.ext.libraries
+android {
+
+    compileSdkVersion rootProject.ext.compileSdkVersion as int
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "app.szyl.com.developetools"
+        minSdkVersion rootProject.ext.minSdkVersion as int
+        targetSdkVersion rootProject.ext.targetSdkVersion as int
+        versionCode rootProject.ext.versionCode as int
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+
+    implementation libraries["appcompat-v7"]
+    implementation libraries["design"]
+    implementation libraries["cardview"]
+
+    implementation project(':szyllibrary')
+    implementation files('libs/gson.jar')
+
+
+    //组件视图绑定依赖
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation project(':filterDropDownMenuLib')
+    implementation project(':squarecamera')
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation files('libs/xUtils-3.0.1.jar')
+
+}

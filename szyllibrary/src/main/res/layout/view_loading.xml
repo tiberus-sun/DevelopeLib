@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="116dp"
+        android:layout_height="116dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shap_dialog_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!--加载圈的样式-->
+        <ProgressBar
+            android:id="@+id/pb_load"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateDrawable="@drawable/progressbar"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_load_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="加载中..."
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

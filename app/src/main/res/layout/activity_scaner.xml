@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.szyl.szyllibrary.view.TsCustomActionBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:cus_title="扫码工具"
+        app:isnot_right_pic="true" />
+
+    <EditText
+        android:id="@+id/content_et"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:textSize="16sp"
+        android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:hint="请输入内容/条形码不允许输入中文"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="@dimen/dp20"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/scaner_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="扫码" />
+
+        <Button
+            android:id="@+id/qrcode_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="生成二维码" />
+
+        <Button
+            android:id="@+id/linecode_bt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="生成条形码" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_bar_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="@dimen/dp20"
+        android:text=""
+        android:textColor="#b19282" />
+
+</LinearLayout>
