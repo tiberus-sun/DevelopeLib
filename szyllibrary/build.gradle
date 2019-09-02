@@ -23,6 +23,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
 
+    //implementation，api的区别：implementation 修饰的只能在当前module中引用，你在app下是引用不了的，但是api可以
     implementation 'com.android.support:appcompat-v7:28.+'
     //Zxing核心包
     implementation 'com.google.zxing:core:3.3.0'

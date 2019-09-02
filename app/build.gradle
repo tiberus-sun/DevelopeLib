@@ -29,12 +29,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-
     implementation libraries["appcompat-v7"]
     implementation libraries["design"]
     implementation libraries["cardview"]
-
-    implementation project(':szyllibrary')
     implementation files('libs/gson.jar')
 
 
@@ -49,5 +46,10 @@ dependencies {
     implementation project(':squarecamera')
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation files('libs/xUtils-3.0.1.jar')
+
+
+    //implementation project(':szyllibrary')
+    //或从jitpack仓库获取
+    implementation 'com.github.tiberus-sun:DevelopeLib:1.0.1'
 
 }

@@ -8,6 +8,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
+        //仓库 android-maven插件与gradle版本有关
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
