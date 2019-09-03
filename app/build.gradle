@@ -48,8 +48,8 @@ dependencies {
     implementation files('libs/xUtils-3.0.1.jar')
 
 
-    //implementation project(':szyllibrary')
+    implementation project(':szyllibrary')
     //或从jitpack仓库获取
-    implementation 'com.github.tiberus-sun:DevelopeLib:1.0.1'
+    //implementation 'com.github.tiberus-sun:DevelopeLib:1.0.1'
 
 }
