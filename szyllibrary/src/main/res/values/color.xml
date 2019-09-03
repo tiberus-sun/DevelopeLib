@@ -36,4 +36,9 @@
     <!--浅灰色-->
     <color name="countdown_grey">#bbbbbb</color>
 
+    <!-- TsPaperButton Default -->
+    <color name="paper_text_color">#60000000</color>
+    <color name="paper_button_color">#FFAD5B</color>
+    <color name="paper_button_shadow_color">#000000</color>
+
 </resources>

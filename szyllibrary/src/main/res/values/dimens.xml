@@ -5,8 +5,6 @@
     <dimen name="space_size">2dp</dimen>
     <dimen name="folder_cover_size">72dp</dimen>
 
-
-
     <!--弹框所需-->
     <!--padding-->
     <dimen name="padding_svprogresshuddefault">15dp</dimen>
@@ -21,4 +19,11 @@
     <!--提示的文字大小-->
     <dimen name="textSize_svprogresshuddefault_msg">15sp</dimen>
     <dimen name="margintop_svprogresshuddefault_msg">10dp</dimen>
+
+
+    <!-- TsPaperButton Default -->
+    <dimen name="paper_text_size">15sp</dimen>
+    <dimen name="paper_button_corner_radius">2dp</dimen>
+    <dimen name="paper_padding">1dp</dimen>
+
 </resources>
