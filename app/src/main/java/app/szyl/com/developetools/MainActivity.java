@@ -11,6 +11,7 @@ import java.util.List;
 
 import app.szyl.com.developetools.activity.CameraActivity;
 import app.szyl.com.developetools.activity.CropPhotoActivity;
+import app.szyl.com.developetools.activity.DeviceInfoActivity;
 import app.szyl.com.developetools.activity.FilterDropActivity;
 import app.szyl.com.developetools.activity.PickerImageActivity;
 import app.szyl.com.developetools.activity.PickerOptionActivity;
@@ -52,6 +53,9 @@ public class MainActivity extends BaseActivity {
         mData.add(new ModelMainItem("底部弹框，选择器", R.mipmap.circle_wrap_text, PickerOptionActivity.class));
         mData.add(new ModelMainItem("二维码/条形码扫码", R.mipmap.circle_rotate, ScanerActivity.class));
         mData.add(new ModelMainItem("替换头像", R.mipmap.circle_dialog, CropPhotoActivity.class));
+        mData.add(new ModelMainItem("设备信息", R.mipmap.circle_device_info, DeviceInfoActivity.class));
+
+
     }
 
     private void initView() {

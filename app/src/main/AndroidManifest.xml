@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -46,6 +48,10 @@
 
         <!--裁剪头像-->
         <activity android:name=".activity.CropPhotoActivity"/>
+
+        <!--设备信息-->
+        <activity android:name=".activity.DeviceInfoActivity"/>
+
 
         <!--异常上报服务-->
         <service

@@ -10,9 +10,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog pd;
 
+    public BaseActivity mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mContext=this;
 
         setMyContentView();
         ButterKnife.bind(this);

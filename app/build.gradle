@@ -42,14 +42,14 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
 
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation project(':filterDropDownMenuLib')
-    implementation project(':squarecamera')
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation files('libs/xUtils-3.0.1.jar')
 
-
+    implementation project(':filterDropDownMenuLib')
+    implementation project(':squarecamera')
     implementation project(':szyllibrary')
-    //或从jitpack仓库获取
-    //implementation 'com.github.tiberus-sun:DevelopeLib:1.0.1'
+
+    //或从jitpack仓库获取 1.登录github 2.https://www.jitpack.io/ 3.输入 https://github.com/tiberus-sun/DevelopeLib
+    //implementation 'com.github.tiberus-sun:DevelopeLib:1.0.2'
 
 }
