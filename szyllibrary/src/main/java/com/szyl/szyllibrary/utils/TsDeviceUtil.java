@@ -390,7 +390,7 @@ public class TsDeviceUtil {
         String serial = "";
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {//9.0+
-                serial = Build.getSerial();
+                serial = Build.getSerial()+Build.SERIAL;
             } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {//8.0+
                 serial = Build.SERIAL;
             } else {//8.0-

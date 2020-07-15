@@ -5,4 +5,7 @@ package com.szyl.szyllibrary.view.poplist.ListWindow;
  */
 public interface IOnItemCBSelectListener {
     public void onCBItemClick(int pos);
+
+    public void onCBItemClick(int pos,String value);
+
 }

@@ -435,12 +435,11 @@ public class ActivityScanerCode extends AppCompatActivity {
         inactivityTimer.onActivity();
         //扫描成功之后的振动与声音提示
         RxBeepTool.playBeep(ActivityScanerCode.this, vibrate);
-
         String result1 = result.getText();
         Log.v("二维码/条形码 扫描结果", result1);
         initDialogResult(result);
         if (mScanerListener == null) {
-            TsToastView.normal(ActivityScanerCode.this,result1).show();
+            //TsToastView.normal(ActivityScanerCode.this,result1).show();
         } else {
             mScanerListener.onSuccess("From to Camera", result);
         }
