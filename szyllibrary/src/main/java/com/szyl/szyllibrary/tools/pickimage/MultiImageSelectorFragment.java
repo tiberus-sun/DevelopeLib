@@ -476,25 +476,28 @@ public class MultiImageSelectorFragment extends Fragment {
                         String path = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                         String name = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
                         long dateTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
-                        Image image = new Image(path, name, dateTime);
-                        images.add(image);
-                        if( !hasFolderGened ) {
-                            // 获取文件夹名称
-                            File imageFile = new File(path);
-                            File folderFile = imageFile.getParentFile();
-                            Folder folder = new Folder();
-                            folder.name = folderFile.getName();
-                            folder.path = folderFile.getAbsolutePath();
-                            folder.cover = image;
-                            if (!mResultFolder.contains(folder)) {
-                                List<Image> imageList = new ArrayList<Image>();
-                                imageList.add(image);
-                                folder.images = imageList;
-                                mResultFolder.add(folder);
-                            } else {
-                                // 更新
-                                Folder f = mResultFolder.get(mResultFolder.indexOf(folder));
-                                f.images.add(image);
+
+                        File imageFile = new File(path);
+                        if(imageFile!=null && imageFile.isFile()){
+                            Image image = new Image(path, name, dateTime);
+                            images.add(image);
+                            if( !hasFolderGened ) {
+                                // 获取文件夹名称
+                                File folderFile = imageFile.getParentFile();
+                                Folder folder = new Folder();
+                                folder.name = folderFile.getName();
+                                folder.path = folderFile.getAbsolutePath();
+                                folder.cover = image;
+                                if (!mResultFolder.contains(folder)) {
+                                    List<Image> imageList = new ArrayList<Image>();
+                                    imageList.add(image);
+                                    folder.images = imageList;
+                                    mResultFolder.add(folder);
+                                } else {
+                                    // 更新
+                                    Folder f = mResultFolder.get(mResultFolder.indexOf(folder));
+                                    f.images.add(image);
+                                }
                             }
                         }
 
