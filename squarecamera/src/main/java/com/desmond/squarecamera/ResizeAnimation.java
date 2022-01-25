@@ -1,6 +1,7 @@
 package com.desmond.squarecamera;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;

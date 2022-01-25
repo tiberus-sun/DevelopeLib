@@ -3,7 +3,8 @@ package com.desmond.squarecamera;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by desmond on 4/10/15.

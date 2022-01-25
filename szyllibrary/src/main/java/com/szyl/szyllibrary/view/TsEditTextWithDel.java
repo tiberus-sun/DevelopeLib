@@ -3,12 +3,13 @@ package com.szyl.szyllibrary.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.szyl.szyllibrary.R;
 

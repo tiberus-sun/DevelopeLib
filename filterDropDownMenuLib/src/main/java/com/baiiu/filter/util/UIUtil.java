@@ -1,11 +1,12 @@
 package com.baiiu.filter.util;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * author: baiiu

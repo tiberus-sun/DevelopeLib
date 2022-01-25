@@ -9,15 +9,16 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
-import android.support.annotation.CheckResult;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.CheckResult;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 
 import com.szyl.szyllibrary.R;
 
@@ -59,7 +60,7 @@ public class TsToastView {
 
     //*******************************************常规方法********************************************
 
-    public static void error(@NonNull Context context,@NonNull String message, int duration) {
+    public static void error(@NonNull Context context, @NonNull String message, int duration) {
         error(context, message, duration, true).show();
     }
 

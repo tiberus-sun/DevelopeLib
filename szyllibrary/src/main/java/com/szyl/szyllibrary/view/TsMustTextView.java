@@ -2,12 +2,13 @@ package com.szyl.szyllibrary.view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * 必填项红*  提示

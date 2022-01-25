@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="txt_black">#333333</color>
+    <color name="txt_hint">#999999</color>
+    <color name="txt_normal">#666666</color>
+    <color name="txt_content">#333c40</color>
+    <color name="linecolor">#EEEEEE</color>
+    <color name="gray6d">#DDDDDD</color>
+    <color name="gray6C">#CCCCCC</color>
+    <color name="gray59">#595959</color>
+    <color name="grayF5">#F5F5F5</color>
+    <color name="colorRed">#F05B48</color>
+    <color name="redEE">#EE6F6F</color>
+    <color name="green">#32CD32</color>
+    <color name="picColor">#82AEF5</color>
+    <color name="black_overlay">#00000000</color>
+
+    <!--地图界面选中资源的颜色-->
+    <color name="dtselect">#2EF8F6</color>
 
 </resources>

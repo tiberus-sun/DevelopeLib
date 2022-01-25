@@ -53,18 +53,35 @@ public class PickerImageActivity extends BaseActivity {
         addGridView.setActivity(PickerImageActivity.this);
         showaddGridView.setActivity(PickerImageActivity.this);
 
+        //模拟权限校验
+        addGridView.setmOnItemClick(isOk -> {
+            if (!isOk) {
+                //如果没有权限 先开启权限
+                // TODO: 2022/1/24  
+                //在权限回调里面 执行下面代码
+                addGridView.setPermissionOk(true);
+            }
+        });
+
+        showaddGridView.setmOnItemClick(isOk -> {
+            if (!isOk) {
+                showaddGridView.setPermissionOk(true);
+            }
+        });
+
+
         //展示
         ArrayList<String> koufens = new ArrayList<String>();
-        koufens.add("http://i5.hexunimg.cn/2014-05-29/165234568.jpg");
-        koufens.add("http://imgsrc.baidu.com/imgad/pic/item/d439b6003af33a87c7dd1084cc5c10385243b5ff.jpg");
+        koufens.add("https://7469-tiberus--sun-e74842-1258562610.tcb.qcloud.la/1584191700914.jpg?sign=6f6862a8905728a390bf06697728d490&t=1643001027");
+        koufens.add("https://7469-tiberus--sun-e74842-1258562610.tcb.qcloud.la/1587975738074.jpg?sign=200707dfdb904b7ec07fe61a51f5da6b&t=1643001235");
         showImgsAdapter = new PubSelectedImgsAdapter("show", this, koufens);
         showGridView.setAdapter(showImgsAdapter);
         showGridView.setSelectPath("show", koufens, koufens);
 
         //新增+展示
         showaddAll = new ArrayList<String>();
-        showaddAll.add("http://i5.hexunimg.cn/2014-05-29/165234568.jpg");
-        showaddAll.add("http://imgsrc.baidu.com/imgad/pic/item/d439b6003af33a87c7dd1084cc5c10385243b5ff.jpg");
+        showaddAll.add("https://7469-tiberus--sun-e74842-1258562610.tcb.qcloud.la/1587969961267.jpg?sign=987208bc8403ee2b7cab2b3b1501d100&t=1643001295");
+        showaddAll.add("https://7469-tiberus--sun-e74842-1258562610.tcb.qcloud.la/1587975738074.jpg?sign=200707dfdb904b7ec07fe61a51f5da6b&t=1643001235");
 
         showaddImgsAdapter = new PubSelectedImgsAdapter("showadd", this, showaddAll,
                 new PubSelectedImgsAdapter.OnItemClickClass() {

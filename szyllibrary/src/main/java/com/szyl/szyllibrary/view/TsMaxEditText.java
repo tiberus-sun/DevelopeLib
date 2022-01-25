@@ -1,11 +1,12 @@
 package com.szyl.szyllibrary.view;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.AttributeSet;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 /**
  * EditText超出字数限制，给用户提示

@@ -1,8 +1,9 @@
 package com.szyl.szyllibrary.tools.zxscaner.tool;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -21,10 +22,10 @@ public class RxBarCode {
      * 获取建造者
      *
      * @param text 样式字符串文本
-     * @return {@link RxBarCode.Builder}
+     * @return {@link Builder}
      */
-    public static RxBarCode.Builder builder(@NonNull CharSequence text) {
-        return new RxBarCode.Builder(text);
+    public static Builder builder(@NonNull CharSequence text) {
+        return new Builder(text);
     }
 
     public static class Builder {
@@ -79,30 +80,27 @@ public class RxBarCode {
          * 条形码的编码类型
          */
         BarcodeFormat barcodeFormat = BarcodeFormat.CODE_128;
-        final int backColor = backgroundColor;
-        final int barCodeColor = codeColor;
-
         MultiFormatWriter writer = new MultiFormatWriter();
         BitMatrix result = null;
         try {
             result = writer.encode(content + "", barcodeFormat, BAR_WIDTH, BAR_HEIGHT, null);
+            int width = result.getWidth();
+            int height = result.getHeight();
+            int[] pixels = new int[width * height];
+            // All are 0, or black, by default
+            for (int y = 0; y < height; y++) {
+                int offset = y * width;
+                for (int x = 0; x < width; x++) {
+                    pixels[offset + x] = result.get(x, y) ? codeColor : backgroundColor;
+                }
+            }
+            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+            return bitmap;
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
-        int width = result.getWidth();
-        int height = result.getHeight();
-        int[] pixels = new int[width * height];
-        // All are 0, or black, by default
-        for (int y = 0; y < height; y++) {
-            int offset = y * width;
-            for (int x = 0; x < width; x++) {
-                pixels[offset + x] = result.get(x, y) ? barCodeColor : backColor;
-            }
-        }
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-        return bitmap;
+        return null;
     }
 
     //----------------------------------------------------------------------------------------------生成条形码开始
@@ -116,7 +114,7 @@ public class RxBarCode {
      * @return
      */
     public static Bitmap createBarCode(String contents, int desiredWidth, int desiredHeight) {
-        return createBarCode(contents, desiredWidth, desiredHeight, 0xFF000000, 0xFFFFFFFF);
+        return createBarCode(contents, desiredWidth, desiredHeight, 0xFFFFFFFF,0xFF000000);
     }
 
     /**

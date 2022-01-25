@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_gravity="left"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <EditText
+        android:id="@+id/Fist_Text"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|left"
+        android:hint="XXX"
+        android:inputType="numberDecimal"
+        android:background="#FFFFFF"
+        android:textColor="#161616"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:text="."
+        android:paddingHorizontal="4dp"
+        android:background="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/Second_Text"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|left"
+        android:hint="XXX"
+        android:inputType="numberDecimal"
+        android:background="#FFFFFF"
+        android:textColor="#161616"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:text="."
+        android:paddingHorizontal="4dp"
+        android:background="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/Third_Text"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|left"
+        android:hint="XXX"
+        android:inputType="numberDecimal"
+        android:background="#FFFFFF"
+        android:textColor="#161616"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:text="."
+        android:paddingHorizontal="4dp"
+        android:background="#FFFFFF"/>
+
+    <EditText
+        android:id="@+id/Four_Text"
+        android:layout_height="match_parent"
+        android:layout_width="60dp"
+        android:layout_gravity="center"
+        android:gravity="center_vertical|left"
+        android:hint="XXX"
+        android:inputType="numberDecimal"
+        android:background="#FFFFFF"
+        android:textColor="#161616"
+        android:textSize="16sp" />
+
+</LinearLayout>

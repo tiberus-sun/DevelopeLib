@@ -4,14 +4,15 @@
     android:background="#21282C"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/btn_back"
         android:src="@mipmap/back_button"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="14dp"
+        android:layout_gravity="center_vertical"
+        android:layout_centerVertical="true" />
 
     <TextView
         android:layout_toRightOf="@+id/btn_back"
@@ -23,20 +24,13 @@
 
     <Button
         android:id="@+id/commit"
-        android:background="@drawable/action_btn"
-        android:minHeight="1dp"
-        android:minWidth="1dp"
-        android:text="完成"
-        android:layout_marginRight="16dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textColor="@color/default_text_color"
-        android:textSize="14sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="42dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="16dp"
+        android:text="完成"
+        android:textColor="@color/default_text_color"
+        android:textSize="14sp" />
 
 </RelativeLayout>

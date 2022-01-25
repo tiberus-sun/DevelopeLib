@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#4e8dfd</color>
-    <color name="colorPrimaryDark">#4e8dfd</color>
-    <color name="colorAccent">#4e8dfd</color>
+    <color name="colorPrimary">#4894EA</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#4894EA</color>
 
     <!--白色 -->
     <color name="white">#FFFFFF</color>
@@ -11,9 +11,7 @@
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color><!--透明色 -->
 
-
     <color name="item_back_press">#10000000</color>
-
 
     <!--覆盖颜色-->
     <color name="bgColor_overlay">#60000000</color>
@@ -32,6 +30,7 @@
     <color name="alertdialog_line">#c6c6c6</color>
     <color name="gray">#333333</color>
     <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="txt_normal">#666666</color>
 
     <!--浅灰色-->
     <color name="countdown_grey">#bbbbbb</color>

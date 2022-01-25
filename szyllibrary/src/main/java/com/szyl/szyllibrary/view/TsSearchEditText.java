@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,7 +12,11 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.szyl.szyllibrary.R;
 
@@ -70,11 +73,31 @@ public class TsSearchEditText extends AppCompatEditText implements View.OnFocusC
         setOnFocusChangeListener(this);
         setOnKeyListener(this);
         addTextChangedListener(this);
+        setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                pressSearch = (actionId ==
+                        EditorInfo.IME_ACTION_SEARCH);
+                if (pressSearch) {
+
+                    /*隐藏软键盘*/
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm.isActive()) {
+                        imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+                    }
+                    listener.onSearchClick(v);
+                }
+                return false;
+            }
+        });
     }
 
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (drawables == null) drawables = getCompoundDrawables();
+        if (drawableLeft == null) drawableLeft = drawables[0];
+
         if (isIconLeft) { // 如果是默认样式，直接绘制
             if (length() < 1) {
                 drawableDel = null;
@@ -82,8 +105,6 @@ public class TsSearchEditText extends AppCompatEditText implements View.OnFocusC
             this.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, drawableDel, null);
             super.onDraw(canvas);
         } else { // 如果不是默认样式，需要将图标绘制在中间
-            if (drawables == null) drawables = getCompoundDrawables();
-            if (drawableLeft == null) drawableLeft = drawables[0];
             float textWidth = getPaint().measureText(getHint().toString());
             int drawablePadding = getCompoundDrawablePadding();
             int drawableWidth = drawableLeft.getIntrinsicWidth();
@@ -104,16 +125,16 @@ public class TsSearchEditText extends AppCompatEditText implements View.OnFocusC
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        pressSearch = (keyCode == KeyEvent.KEYCODE_ENTER);
-        if (pressSearch) {
-
-            /*隐藏软键盘*/
-            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            if (imm.isActive()) {
-                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
-            }
-            listener.onSearchClick(v);
-        }
+//        pressSearch = (keyCode == KeyEvent.KEYCODE_ENTER);
+//        if (pressSearch) {
+//
+//            /*隐藏软键盘*/
+//            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//            if (imm.isActive()) {
+//                imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+//            }
+//            listener.onSearchClick(v);
+//        }
         return false;
     }
 
@@ -166,5 +187,9 @@ public class TsSearchEditText extends AppCompatEditText implements View.OnFocusC
     @Override
     public void onTextChanged(CharSequence arg0, int arg1, int arg2,
                               int arg3) {
+    }
+
+    public void setIconLeft(boolean iconLeft) {
+        isIconLeft = iconLeft;
     }
 }

@@ -21,7 +21,6 @@ import android.os.Build;
 import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -31,6 +30,8 @@ import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
 
 import com.szyl.szyllibrary.view.TsToastView;
 
@@ -156,7 +157,7 @@ public class TsDeviceUtil {
      * @param context
      * @return
      */
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getDeviceIdIMEI(Context context) {
         String id;
         //android.telephony.TelephonyManager
@@ -628,6 +629,7 @@ public class TsDeviceUtil {
      * SubscriberId(IMSI) = 460030419724900<br>
      * VoiceMailNumber = *86<br>
      */
+    @SuppressLint("MissingPermission")
     public static String getPhoneStatus(Context context) {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             TsToastView.error(context, "请先获取读取手机设备权限").show();

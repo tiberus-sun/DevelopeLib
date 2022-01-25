@@ -5,20 +5,20 @@
     android:gravity="center">
 
     <RelativeLayout
-        android:layout_width="75dp"
-        android:layout_height="60dp">
+        android:layout_width="90dp"
+        android:layout_height="90dp">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="75dp"
-            android:layout_height="60dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop" />
 
         <ImageView
             android:id="@+id/delete_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"

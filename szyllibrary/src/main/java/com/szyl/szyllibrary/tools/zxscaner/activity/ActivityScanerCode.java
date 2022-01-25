@@ -15,11 +15,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.annotation.ColorInt;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -32,6 +27,12 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
@@ -283,7 +284,7 @@ public class ActivityScanerCode extends AppCompatActivity {
 
     private void initPermission() {
         //请求Camera权限 与 文件读写 权限
-        if (ContextCompat.checkSelfPermission(ActivityScanerCode.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED &&
+        if (ContextCompat.checkSelfPermission(ActivityScanerCode.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(ActivityScanerCode.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(ActivityScanerCode.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
@@ -398,7 +399,17 @@ public class ActivityScanerCode extends AppCompatActivity {
         BarcodeFormat type = result.getBarcodeFormat();
         final String realContent = result.getText();
 
-        if (rxDialogSure == null) {
+        if (handler != null) {
+            // 连续扫描，不发送此消息扫描一次结束后就不能再次扫描
+            handler.sendEmptyMessage(R.id.restart_preview);
+
+            Intent intent=new Intent();
+            intent.putExtra("scaner_result",realContent);
+            setResult(Activity.RESULT_OK,intent);
+            finish();
+        }
+
+        /*if (rxDialogSure == null) {
             //提示弹窗
             rxDialogSure = new TsAlertDialog(ActivityScanerCode.this).builder();
         }
@@ -410,7 +421,6 @@ public class ActivityScanerCode extends AppCompatActivity {
         } else {
             rxDialogSure.setTitle("扫描结果");
         }
-
         rxDialogSure.setMsg(realContent);
         rxDialogSure.setPositiveButton("确定",new View.OnClickListener() {
             @Override
@@ -427,8 +437,7 @@ public class ActivityScanerCode extends AppCompatActivity {
 
             }
         });
-
-        rxDialogSure.show();
+        rxDialogSure.show();*/
     }
 
     public void handleDecode(Result result) {

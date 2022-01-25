@@ -12,7 +12,7 @@
         android:layout_width="116dp"
         android:layout_height="116dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/shap_dialog_bg"
+        android:background="@drawable/shape_dialog_bg"
         android:gravity="center"
         android:orientation="vertical">
 

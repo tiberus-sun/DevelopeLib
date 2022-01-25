@@ -2,7 +2,7 @@ package app.szyl.com.developetools.base;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 

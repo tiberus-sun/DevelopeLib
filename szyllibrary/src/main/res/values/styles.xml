@@ -52,7 +52,7 @@
     <style name="StyleEditText">
         <item name="android:layout_width" >match_parent</item>
         <item name="android:layout_height" >36dp</item>
-        <item name="android:background">@drawable/shape</item>
+        <item name="android:background">@drawable/shape_list_bg</item>
         <item name="android:drawablePadding">10dp</item>
         <item name="android:drawableStart">@mipmap/search</item>
         <item name="android:gravity">center_vertical</item>

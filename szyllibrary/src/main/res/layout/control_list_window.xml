@@ -11,7 +11,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="-1dp"
         android:layout_marginRight="4dp"
-        android:background="@drawable/shape"
+        android:background="@drawable/shape_list_bg"
         android:fadeScrollbars="false"
         android:scrollbars="none"></ListView>
 

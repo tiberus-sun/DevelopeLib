@@ -63,7 +63,6 @@ public class PubShowImgsAdapter extends BaseAdapter {
 
 		Glide.with(context)
 				.load(list.get(position))
-				.asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
 				//  .placeholder(R.drawable.loading)
 				.error(R.mipmap.icon_error)
 				.diskCacheStrategy(DiskCacheStrategy.NONE)

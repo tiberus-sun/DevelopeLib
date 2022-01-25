@@ -4,10 +4,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +13,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -77,7 +77,7 @@ public class PreViewActivity extends AppCompatActivity implements OnClickListene
 			pager.setCurrentItem(position);
 			String posi=(position+1)+"/"+resultList.size();
 			pager_selected.setText(posi);
-			pager.setOnPageChangeListener(new OnPageChangeListener() {
+			pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 				@Override
 				public void onPageSelected(int arg0) {
 					position=arg0;
@@ -152,7 +152,6 @@ public class PreViewActivity extends AppCompatActivity implements OnClickListene
 			PhotoView imageView = (PhotoView) imageLayout.findViewById(R.id.image);
 			Glide.with(PreViewActivity.this)
 					.load("file://"+images.get(position))
-					.asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
 					//  .placeholder(R.drawable.loading)
 					.error(R.mipmap.icon_error)
 					.diskCacheStrategy(DiskCacheStrategy.NONE)

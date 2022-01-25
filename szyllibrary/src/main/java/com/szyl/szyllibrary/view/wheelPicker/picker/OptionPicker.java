@@ -1,17 +1,19 @@
 package com.szyl.szyllibrary.view.wheelPicker.picker;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.szyl.szyllibrary.view.wheelPicker.widget.WheelView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -34,7 +36,7 @@ public class OptionPicker extends WheelPicker {
         this.options.addAll(Arrays.asList(options));
     }
 
-    public OptionPicker(Activity activity, ArrayList<String> options) {
+    public OptionPicker(Activity activity, List<String> options) {
         super(activity);
         this.options.addAll(options);
     }

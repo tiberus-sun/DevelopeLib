@@ -1,9 +1,10 @@
 package com.szyl.szyllibrary.view.picdialog;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * picshowdialog，重写viewpager，避免pointerIndex out of range异常

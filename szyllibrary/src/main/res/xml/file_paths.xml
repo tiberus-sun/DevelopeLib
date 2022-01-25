@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <external-path path="Android/data/com/szyl/szyllibrary/" name="files_root" />
-    <external-path path="." name="external_stoage_root" />
+    <external-cache-path
+        name="share"
+        path="/" />
+
+    <!-- 1.<root-path/> 代表设备的根目录new File("/");
+    2.<files-path/> 代表context.getFilesDir()
+    3.<cache-path/> 代表context.getCacheDir()
+    4.<external-path/> 代表Environment.getExternalStorageDirectory()
+    5.<external-files-path>代表context.getExternalFilesDirs()
+    6.<external-cache-path>代表getExternalCacheDirs()-->
+
+    <root-path
+        name="root"
+        path="." />
+
+    <files-path
+        name="files"
+        path="." />
+
+    <cache-path
+        name="cache"
+        path="." />
+
+    <external-path
+        name="external"
+        path="." />
+
+    <external-files-path
+        name="external_file_path"
+        path="." />
+
+    <external-cache-path
+        name="external_cache_path"
+        path="." />
 </paths>

@@ -5,7 +5,7 @@
     android:background="#000000"
     android:fitsSystemWindows="true">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
@@ -18,12 +18,12 @@
 
         <ImageView
             android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:src="@mipmap/back_button" />
+            android:src="@mipmap/back_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:id="@+id/pager_selected"
@@ -37,17 +37,10 @@
         <Button
             android:id="@+id/commit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="42dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
-            android:background="@drawable/action_btn"
-            android:minWidth="1dp"
-            android:minHeight="1dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
             android:text="完成"
             android:textColor="@color/default_text_color"
             android:textSize="14sp" />

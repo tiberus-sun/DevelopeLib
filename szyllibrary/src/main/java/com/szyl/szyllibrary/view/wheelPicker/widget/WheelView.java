@@ -8,8 +8,6 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -19,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,9 +49,9 @@ public class WheelView extends ScrollView {
     public static final int PADDING_LEFT = 28;
     public static final int PADDING_TOP = 6;
     public static final int PADDING_RIGHT = 28;
-    public static final int PADDING_BOTTOM = 6;
+    public static final int PADDING_BOTTOM = 8;
 
-    private static final int DELAY = 50;
+    private static final int DELAY = 0;
     private Context context;
     private LinearLayout views;
     private LinkedList<String> items = new LinkedList<String>();

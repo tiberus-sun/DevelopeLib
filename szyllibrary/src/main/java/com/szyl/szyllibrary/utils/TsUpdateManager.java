@@ -1,19 +1,26 @@
 package com.szyl.szyllibrary.utils;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
+import com.szyl.szyllibrary.view.TsToastView;
 import com.szyl.szyllibrary.view.dialog.ios.TsAlertDialog;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,21 +36,39 @@ public class TsUpdateManager {
     /* 下载结束 */
     private static final int DOWNLOAD_FINISH = 2;
 
-    /* 下载保存路径 */
-    private String mSavePath;
+    /* 下载保存路径 */ // 获得存储卡的路径
+    private final String mSavePath;
     /* 记录进度条数量 */
     private int progress;
     /* 是否取消更新 */
-    private boolean cancelUpdate = false;
+    private final boolean cancelUpdate = false;
 
-    private Context mContext;
-    private String mVersionNo;
-    private String mUpdateUrl;
+    private final Context mContext;
+    private String mVersionNo = "0";
+    private final String mUpdateUrl;
 
     /* 更新进度条修改的 */
     private ProgressDialog progressDialog;
 
-    private Handler mHandler = new Handler() {
+    private final MyHandler mHandler = new MyHandler(this);
+
+    /**
+     * 检查软件是否有更新版本
+     * 本系统是在登录的时候后台返回版本号
+     * 不用调用方法去读取服务器版本配置文件
+     *
+     * @return
+     */
+    public boolean isUpdate() {
+        // 获取当前软件版本
+        int versionCode = TsDeviceUtil.getAppVersionNo(mContext);
+        //服务器版本
+        Integer serviceCode = Integer.valueOf(mVersionNo);
+        // 版本判断
+        return serviceCode > versionCode;
+    }
+
+    /*public Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 // 正在下载
@@ -59,19 +84,23 @@ public class TsUpdateManager {
                     break;
             }
         }
+    };*/
 
-        ;
-    };
-
-    public TsUpdateManager(Context context, String versionNo) {
-        this.mContext = context;
-        this.mVersionNo = versionNo;
-    }
+//    public TsUpdateManager(Context context) {
+//        this.mContext = context;
+//    }
+//
+//    public TsUpdateManager(Context context, String updateUrl) {
+//        this.mContext = context;
+//        this.mUpdateUrl = updateUrl;
+//    }
 
     public TsUpdateManager(Context context, String versionNo, String updateUrl) {
         this.mContext = context;
         this.mVersionNo = versionNo;
         this.mUpdateUrl = updateUrl;
+        this.mSavePath = context.getExternalCacheDir().getPath();
+
     }
 
     /**
@@ -82,35 +111,37 @@ public class TsUpdateManager {
             // 显示提示对话框
             showNoticeDialog();
         } else {
-
-			/*Intent intent = new Intent();
-			intent.setClass(mContext, MeanBottomActivity.class);
-			//使用这个Intent对象来启动LoginActivity 登录页面
-			mContext.startActivity(intent);
-			//登录界面关闭
-			LoginActivity.instance.finish();*/
+            TsToastView.normal(mContext, TsDeviceUtil.getAppVersionName(mContext) + "已经是最新版本").show();
         }
-
     }
 
     /**
-     * 检查软件是否有更新版本
-     * 本系统是在登录的时候后台返回版本号
-     * 不用调用方法去读取服务器版本配置文件
-     *
-     * @return
+     * 显示软件下载对话框
      */
-    public boolean isUpdate() {
-        // 获取当前软件版本
-        int versionCode = TsDeviceUtil.getAppVersionNo(mContext);
+    private void showDownloadDialog() {
 
-        //服务器版本
-        Integer serviceCode = Integer.valueOf(mVersionNo);
-        // 版本判断
-        if (serviceCode > versionCode) {
-            return true;
-        }
-        return false;
+        //弹出要给ProgressDialog
+        progressDialog = new ProgressDialog(mContext, AlertDialog.THEME_HOLO_LIGHT);
+        //progressDialog.setTitle("提示信息");
+        progressDialog.setMessage("正在下载中，请稍后......");
+        //  设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
+        progressDialog.setCancelable(false);
+        //    设置ProgressDialog样式为水平的样式
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        //取消下载方法
+		/*progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						// 设置取消状态
+						cancelUpdate = true;
+					}
+				});*/
+
+        progressDialog.show();
+        // 现在文件
+        downloadApk();
     }
 
     /**
@@ -119,45 +150,56 @@ public class TsUpdateManager {
     public void showNoticeDialog() {
 
         new TsAlertDialog(mContext).builder().setTitle("软件更新").setMsg("检测到新版本，为了不影响您的使用，请立即更新。")
-                .setPositiveButton("确定", new View.OnClickListener() {
+                .setPositiveButton("取消更新", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                    }
+                }).setNegativeButton("立刻更新", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //如果有相应的版本直接安装 否则下载
+                if (!installApk()) {
+                    if (!TextUtils.isEmpty(mUpdateUrl)) {
                         // 显示下载对话框
                         showDownloadDialog();
                     }
-                }).setCancelable(false).show();
+                }
+
+            }
+        }).show();
+
+        //setCancelable(false)
     }
 
-    /**
-     * 显示软件下载对话框
-     */
-    private void showDownloadDialog() {
+    private static class MyHandler extends Handler {
 
-        //    弹出要给ProgressDialog
-        progressDialog = new ProgressDialog(mContext, progressDialog.THEME_HOLO_LIGHT);
-        progressDialog.setTitle("提示信息");
-        progressDialog.setMessage("正在下载中，请稍后......");
-        //  设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
-        progressDialog.setCancelable(false);
-        //    设置ProgressDialog样式为水平的样式
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        private final WeakReference<TsUpdateManager> mTsUpdateManager;
 
-        //取消下载方法
-		/*progressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
-				new DialogInterface.OnClickListener() {
+        public MyHandler(TsUpdateManager tsUpdateManager) {
+            mTsUpdateManager = new WeakReference<TsUpdateManager>(tsUpdateManager);
+        }
 
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						// 设置取消状态
-						cancelUpdate = true;
-
-					}
-				});*/
-
-        progressDialog.show();
-        // 现在文件
-        downloadApk();
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            if (mTsUpdateManager != null && mTsUpdateManager.get() != null) {
+                TsUpdateManager tsUpdateManager = mTsUpdateManager.get();
+                switch (msg.what) {
+                    // 正在下载
+                    case DOWNLOAD:
+                        // 设置进度条位置
+                        tsUpdateManager.progressDialog.setProgress(tsUpdateManager.progress);
+                        break;
+                    case DOWNLOAD_FINISH:
+                        // 安装文件
+                        tsUpdateManager.installApk();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 
     /**
@@ -176,10 +218,12 @@ public class TsUpdateManager {
         public void run() {
             try {
                 // 判断SD卡是否存在，并且是否具有读写权限
+//                File file1=new File(mSavePath);
+//                if(!file1.exists()){
+//                    file1.mkdir();
+//                }
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    // 获得存储卡的路径
-                    String sdpath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
-                    mSavePath = sdpath + "download";
+
                     URL url = new URL(mUpdateUrl);
                     // 创建连接
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -190,15 +234,16 @@ public class TsUpdateManager {
                     InputStream is = conn.getInputStream();
 
                     File file = new File(mSavePath);
+
                     // 判断文件目录是否存在
                     if (!file.exists()) {
                         file.mkdirs();
                     }
-                    File apkFile = new File(mSavePath, "szyllibrary");
+                    File apkFile = new File(mSavePath, mVersionNo + "app.apk");
                     FileOutputStream fos = new FileOutputStream(apkFile);
                     int count = 0;
                     // 缓存
-                    byte buf[] = new byte[1024];
+                    byte[] buf = new byte[1024];
                     // 写入到文件中
                     do {
                         int numread = is.read(buf);
@@ -229,18 +274,26 @@ public class TsUpdateManager {
         }
     }
 
-    ;
-
     /**
      * 安装APK文件
      */
-    private void installApk() {
-        File apkfile = new File(mSavePath, "szyllibrary");
+    private boolean installApk() {
+        File apkfile = new File(mSavePath, mVersionNo + "app.apk");
         if (!apkfile.exists()) {
-            return;
+            return false;
         }
-
-        Intent intent = new Intent(Intent.ACTION_VIEW);
+        Intent intent;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//            Uri apkUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".fileprovider", toInstall);
+            intent = new Intent(Intent.ACTION_INSTALL_PACKAGE);
+//            intent.setData(apkUri);
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        } else {
+//            Uri apkUri = Uri.fromFile(toInstall);
+            intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
        /* //判断是否是AndroidN以及更高的版本
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Uri contentUri = FileProvider.getUriForFile(mContext, mContext.getApplicationInfo().packageName + ".Fileprovider", apkfile);
@@ -251,13 +304,13 @@ public class TsUpdateManager {
             intent.setDataAndType(Uri.fromFile(apkfile), "application/vnd.android.package-archive");
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }*/
-
         // 仅需改变这一行
         TsFileProvider7.setIntentDataAndType(mContext,
                 intent, "application/vnd.android.package-archive", apkfile, true);
-
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                     intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
+        return true;
     }
 
 }

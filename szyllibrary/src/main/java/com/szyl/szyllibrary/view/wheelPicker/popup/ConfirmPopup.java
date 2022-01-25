@@ -2,17 +2,19 @@ package com.szyl.szyllibrary.view.wheelPicker.popup;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import com.szyl.szyllibrary.view.wheelPicker.util.ScreenUtils;
 
@@ -30,11 +32,11 @@ public abstract class ConfirmPopup<V extends View> extends BottomPopup<View> {
 
     //设置弹出popwin的取消 确定字体颜色   0XFF0288CE淡蓝色
     protected int cancelTextColor = 0XFF626262;
-    protected int submitTextColor = 0XFF626262;
+    protected int submitTextColor = 0XFF02AFEC;
 
     //设置弹出popwin的取消 确定字体大小
-    protected int cancelTextSize = 14;
-    protected int submitTextSize = 14;
+    protected int cancelTextSize = 16;
+    protected int submitTextSize = 16;
     protected int titleTextColor = Color.BLACK;
 
     /**
@@ -222,7 +224,7 @@ public abstract class ConfirmPopup<V extends View> extends BottomPopup<View> {
             cancelButton.setText(cancelText);
         }
         cancelButton.setTextColor(cancelTextColor);
-        cancelButton.setTextSize(cancelTextSize);
+        cancelButton.setTextSize(TypedValue.COMPLEX_UNIT_SP,cancelTextSize);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,6 +242,7 @@ public abstract class ConfirmPopup<V extends View> extends BottomPopup<View> {
         titleLayoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
         titleLayoutParams.addRule(RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
         titleView.setLayoutParams(titleLayoutParams);
+        titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
         titleView.setGravity(Gravity.CENTER);
         if (!TextUtils.isEmpty(titleText)) {
             titleView.setText(titleText);
@@ -255,7 +258,7 @@ public abstract class ConfirmPopup<V extends View> extends BottomPopup<View> {
         submitButton.setLayoutParams(submitButtonLayoutParams);
         submitButton.setBackgroundColor(Color.TRANSPARENT);
         submitButton.setGravity(Gravity.CENTER);
-        submitButton.setTextSize(submitTextSize);
+        submitButton.setTextSize(TypedValue.COMPLEX_UNIT_SP,submitTextSize);
         if (!TextUtils.isEmpty(submitText)) {
             submitButton.setText(submitText);
         }

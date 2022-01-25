@@ -1,9 +1,10 @@
 package com.szyl.szyllibrary.view.wheelPicker.picker;
 
 import android.app.Activity;
-import android.support.annotation.ColorInt;
-import android.support.annotation.IntRange;
 import android.view.View;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 
 import com.szyl.szyllibrary.view.wheelPicker.popup.ConfirmPopup;
 import com.szyl.szyllibrary.view.wheelPicker.widget.WheelView;

@@ -7,11 +7,12 @@
 
     <GridView
         android:id="@+id/grid"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:horizontalSpacing="2dp"
         android:listSelector="@null"
         android:numColumns="3"
+        android:gravity="center_horizontal"
         android:stretchMode="columnWidth"
         android:verticalSpacing="2dp" />
 
@@ -33,9 +34,7 @@
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
         android:background="#cc000000"
-        android:clickable="true"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp" >
+        android:clickable="true">
 
         <TextView
             android:id="@+id/category_btn"
@@ -51,16 +50,11 @@
             android:textSize="16sp"
             tools:text="所有图片" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/preview"
-            android:background="#8828292A" />
 
         <Button
             android:id="@+id/preview"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="42dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@null"

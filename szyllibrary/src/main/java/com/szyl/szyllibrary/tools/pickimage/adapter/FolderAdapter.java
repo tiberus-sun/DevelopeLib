@@ -83,15 +83,9 @@ public class FolderAdapter extends BaseAdapter {
                 holder.size.setText(getTotalImageSize()+"张");
                 if(mFolders.size()>0){
                     Folder f = mFolders.get(0);
-                    /*Picasso.with(mContext)
-                            .load(new File(f.cover.path))
-                            .error(R.drawable.default_error)
-                            .resize(mImageSize, mImageSize)
-                            .centerCrop()
-                            .into(holder.cover);*/
                     Glide.with(mContext)
                             .load(new File(f.cover.path))
-                            .asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
+                            //.asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
                             .error(R.mipmap.icon_error)
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .centerCrop()
@@ -148,15 +142,9 @@ public class FolderAdapter extends BaseAdapter {
             name.setText(data.name);
             size.setText(data.images.size()+"张");
             // 显示图片
-            /*Picasso.with(mContext)
-                    .load(new File(data.cover.path))
-                    .placeholder(R.drawable.default_error)
-                    .resize(mImageSize, mImageSize)
-                    .centerCrop()
-                    .into(cover);*/
             Glide.with(mContext)
                     .load(new File(data.cover.path))
-                    .asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
+                    //.asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
                     //  .placeholder(R.drawable.loading)
                     .error(R.mipmap.icon_error)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)

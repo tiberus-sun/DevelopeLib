@@ -202,8 +202,6 @@ public class ImageGridAdapter extends BaseAdapter {
         if(lp.height != mItemSize){
             view.setLayoutParams(mItemLayoutParams);
         }
-        
-        
 
         return view;
     }
@@ -237,16 +235,9 @@ public class ImageGridAdapter extends BaseAdapter {
 
             if(mItemSize > 0) {
                 // 显示图片
-                /*Picasso.with(mContext)
-                        .load(imageFile)
-                        .placeholder(R.drawable.default_error)
-                                //.error(R.drawable.default_error)
-                        .resize(mItemSize, mItemSize)
-                        .centerCrop()
-                        .into(image);*/
                 Glide.with(mContext)
                         .load(imageFile)
-                        .asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
+                        //.asBitmap()//只加载静态图片，如果是git图片则只加载第一帧。
                         // .placeholder(R.drawable.loading)
                         .error(R.mipmap.icon_error)
                         .diskCacheStrategy(DiskCacheStrategy.NONE)

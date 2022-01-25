@@ -3,10 +3,10 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.tiberus-sun'
 android {
 
-    compileSdkVersion   28
+    compileSdkVersion   30
     defaultConfig {
-        minSdkVersion    19
-        targetSdkVersion 28
+        minSdkVersion    24
+        targetSdkVersion  30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,13 +24,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     //implementation，api的区别：implementation 修饰的只能在当前module中引用，你在app下是引用不了的，但是api可以
-    implementation 'com.android.support:appcompat-v7:28.+'
+    api libraries["appcompat"]
+    api libraries["design"]
+    api 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.android.support:design:30.0.0'
     //Zxing核心包
-    implementation 'com.google.zxing:core:3.3.0'
+    api 'com.google.zxing:core:3.3.0'
     //图片库
-    api 'com.github.bumptech.glide:glide:3.7.0'
+    api 'com.github.bumptech.glide:glide:4.9.0'
     //图片裁剪
     api 'com.github.yalantis:ucrop:2.2.2-native'
+
 }
 
     /*//打成jar包

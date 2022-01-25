@@ -2,6 +2,7 @@ package com.szyl.szyllibrary.view.wheelPicker.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
@@ -115,5 +116,19 @@ public final class ScreenUtils {
         final float scale = context.getResources().getDisplayMetrics().density;
         int pxValue = (int) (dpValue * scale + 0.5f);
         return pxValue;
+    }
+
+
+    /**
+     * 获得设备最小宽度 返回宽度单位dp
+     * 5.5寸手机宽度为360dp 14寸平板 800dp
+     * @param context
+     * @return
+     */
+    public static int getDeviceSmallWidth(Context context)
+    {
+        Configuration deviceconfig = context.getResources().getConfiguration();
+        int smallestScreenWidth = deviceconfig.smallestScreenWidthDp;
+        return smallestScreenWidth;
     }
 }

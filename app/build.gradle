@@ -20,6 +20,11 @@ android {
         exclude 'META-INF/DEPENDENCIES'
 
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -29,20 +34,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation libraries["appcompat-v7"]
+    implementation libraries["appcompat"]
     implementation libraries["design"]
-    implementation libraries["cardview"]
     implementation files('libs/gson.jar')
 
-
     //组件视图绑定依赖
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.31'
-
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'org.greenrobot:eventbus:3.1.1'
-    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
     implementation files('libs/xUtils-3.0.1.jar')
 
     implementation project(':filterDropDownMenuLib')
@@ -50,6 +53,6 @@ dependencies {
     implementation project(':szyllibrary')
 
     //或从jitpack仓库获取 1.登录github 2.https://www.jitpack.io/ 3.输入 https://github.com/tiberus-sun/DevelopeLib
-    //implementation 'com.github.tiberus-sun:DevelopeLib:1.0.2'
+    //implementation 'com.github.tiberus-sun:DevelopeLib:1.0.3'
 
 }

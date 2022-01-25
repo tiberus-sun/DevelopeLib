@@ -42,7 +42,7 @@ public class ExpandableListWindow extends PopupWindow implements ExpandableListV
 
 	private void init()
 	{
-		View view = LayoutInflater.from(mContext).inflate(R.layout.contorl_exlist_window, null);
+		View view = LayoutInflater.from(mContext).inflate(R.layout.control_exlist_window, null);
 		setContentView(view);		
 		setWidth(LayoutParams.MATCH_PARENT);
 		setHeight(WindowManager.LayoutParams.WRAP_CONTENT);

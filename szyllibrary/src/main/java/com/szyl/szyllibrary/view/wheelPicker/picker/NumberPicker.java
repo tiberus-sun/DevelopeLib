@@ -2,7 +2,7 @@ package com.szyl.szyllibrary.view.wheelPicker.picker;
 
 import android.app.Activity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 数字选择器
@@ -32,7 +32,7 @@ public class NumberPicker extends OptionPicker {
     /**
      * 设置数字范围
      */
-    public void setRange(ArrayList<String> options) {
+    public void setRange(List<String> options) {
         this.options.addAll(options);
     }
 

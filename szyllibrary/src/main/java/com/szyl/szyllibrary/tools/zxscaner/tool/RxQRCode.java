@@ -1,8 +1,9 @@
 package com.szyl.szyllibrary.tools.zxscaner.tool;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -23,10 +24,10 @@ public class RxQRCode {
      * 获取建造者
      *
      * @param text 样式字符串文本
-     * @return {@link RxQRCode.Builder}
+     * @return {@link Builder}
      */
-    public static RxQRCode.Builder builder(@NonNull CharSequence text) {
-        return new RxQRCode.Builder(text);
+    public static Builder builder(@NonNull CharSequence text) {
+        return new Builder(text);
     }
 
     public static class Builder {

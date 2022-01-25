@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:horizontalSpacing="4dp"
-        android:numColumns="4"
+        android:numColumns="3"
         android:stretchMode="columnWidth"
         android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
 
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:horizontalSpacing="4dp"
-            android:numColumns="4"
+            android:numColumns="3"
             android:stretchMode="columnWidth"
             android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:horizontalSpacing="4dp"
-            android:numColumns="4"
+            android:numColumns="3"
             android:stretchMode="columnWidth"
             android:verticalSpacing="6dp"></com.szyl.szyllibrary.tools.pickimage.ImageGridView>
     </LinearLayout>

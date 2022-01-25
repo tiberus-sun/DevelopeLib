@@ -4,19 +4,20 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.szyl.szyllibrary.BuildConfig;
 import com.szyl.szyllibrary.R;
 import com.szyl.szyllibrary.tools.pickimage.photoview.PhotoView;
@@ -155,7 +156,7 @@ public class PicShowDialog extends Dialog {
             String mImageUrl=imageInfos.get(position);
             //res mipmap中的文件
             if(mImageUrl.contains("mipmap")){
-                int imgInt=context.getResources().getIdentifier(mImageUrl, "mipmap", BuildConfig.APPLICATION_ID);
+                int imgInt=context.getResources().getIdentifier(mImageUrl, "mipmap", BuildConfig.LIBRARY_PACKAGE_NAME);
                 photoView.setImageResource(R.mipmap.mipmap_user);
             }else{
 
@@ -166,22 +167,19 @@ public class PicShowDialog extends Dialog {
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
-                Glide.with(context).load(mImageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(
-                        new GlideDrawableImageViewTarget(photoView) {
-                            @Override
-                            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                                super.onResourceReady(resource, glideAnimation);
-                                progressBar.setVisibility(View.GONE);
-                            }
+                Glide.with(context).load(mImageUrl).diskCacheStrategy(DiskCacheStrategy.ALL).into(new CustomTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        photoView.setImageDrawable(resource);
+                        progressBar.setVisibility(View.GONE);
+                    }
 
-                            @Override
-                            public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                                Toast.makeText(context, "图片加载失败", Toast.LENGTH_SHORT).show();
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        }
-                );
-
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                        //Toast.makeText(context, "图片加载失败", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
             }
 
             photoView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {

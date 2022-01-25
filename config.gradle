@@ -1,6 +1,6 @@
 ext {
 
-    minSdkVersion=19
+    /*minSdkVersion=19
     targetSdkVersion=28
     compileSdkVersion=28
     versionName="V1.0.2"
@@ -10,5 +10,18 @@ ext {
             "appcompat-v7"   : 'com.android.support:appcompat-v7:28.+',
             "design"         : 'com.android.support:design:28.+',
             "cardview"     : 'com.android.support:cardview-v7:28.+'
+    ]*/
+
+    minSdkVersion = 24
+    targetSdkVersion = 30
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.3"
+    versionCode = 202201241
+    versionName = "V2.0.0"
+
+    libraries = [
+            "appcompat": 'androidx.appcompat:appcompat:1.2.0',
+            "design"      : 'com.android.support:design:30.0.0'
     ]
+
 }

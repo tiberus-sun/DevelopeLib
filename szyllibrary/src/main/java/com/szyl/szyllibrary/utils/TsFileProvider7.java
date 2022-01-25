@@ -6,7 +6,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.content.FileProvider;
+
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.util.List;
@@ -31,8 +32,8 @@ public class TsFileProvider7 {
 
     public static Uri getUriForFile24(Context context, File file) {
         //context.getPackageName() 或是 context.getApplicationInfo().packageName 得到都是应用的包名
-        Uri fileUri = FileProvider.getUriForFile(context,
-                context.getApplicationInfo().packageName + ".Fileprovider",
+        Uri fileUri = FileProvider.getUriForFile(context.getApplicationContext(),
+                context.getPackageName() + ".FileProvider",
                 file);
         return fileUri;
     }
@@ -51,8 +52,17 @@ public class TsFileProvider7 {
                                             File file,
                                             boolean writeAble) {
         if (Build.VERSION.SDK_INT >= 24) {
+            /**
+             *   Uri apkUri = FileProvider.getUriForFile(context, "com.ylzh.app.forestfire3", file);
+             *                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+             *                     intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+             */
+            intent.setType("*/*");
+//            intent.putExtra(Intent.EXTRA_STREAM, getUriForFile(context, file));
             intent.setDataAndType(getUriForFile(context, file), type);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            context.grantUriPermission(context.getPackageManager().toString(), getUriForFile(context, file), Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
             if (writeAble) {
                 intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             }

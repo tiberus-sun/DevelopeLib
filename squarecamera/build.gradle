@@ -28,5 +28,5 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation libraries["appcompat-v7"]
+    implementation libraries["appcompat"]
 }

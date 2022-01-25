@@ -40,7 +40,7 @@ public class ListWindow extends PopupWindow implements OnItemClickListener {
 
 	private void init(ArrayList<HashMap<String, Object>> list)
 	{
-		View view = LayoutInflater.from(mContext).inflate(R.layout.contorl_list_window, null);
+		View view = LayoutInflater.from(mContext).inflate(R.layout.control_list_window, null);
 		setContentView(view);		
 		setWidth(LayoutParams.MATCH_PARENT);
 		setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
