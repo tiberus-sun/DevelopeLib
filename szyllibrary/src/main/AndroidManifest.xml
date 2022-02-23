@@ -52,10 +52,10 @@
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
-        <!--authorities 与使用时候的权限必须一致-->
+        <!--authorities 与使用时候的权限必须一致  子模块中不好用 ${applicationId}-->
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.Fileprovider"
+            android:authorities="com.szyl.szyllibrary.Fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

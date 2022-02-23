@@ -33,7 +33,7 @@ public class TsFileProvider7 {
     public static Uri getUriForFile24(Context context, File file) {
         //context.getPackageName() 或是 context.getApplicationInfo().packageName 得到都是应用的包名
         Uri fileUri = FileProvider.getUriForFile(context.getApplicationContext(),
-                context.getPackageName() + ".FileProvider",
+                "com.szyl.szyllibrary.FileProvider",
                 file);
         return fileUri;
     }
