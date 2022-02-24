@@ -54,8 +54,8 @@
 
         <!--authorities 与使用时候的权限必须一致  子模块中不好用 ${applicationId}-->
         <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.szyl.szyllibrary.Fileprovider"
+            android:name="com.szyl.szyllibrary.utils.TsFileProvider"
+            android:authorities="${applicationId}.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
